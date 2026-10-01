@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muda cor do texto</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        button {
+            padding: 8px 16px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="meuParagrafo">Este é um paragrafo que mudará de cor quando você clicar nos botoes abaixo </p>
+
+    <button onclick="mudarCor('red')">Vermelho</button>
+    <button onclick="mudarCor('blue')">Azul</button>
+    <button onclick="mudarCor('green')">Verde</button>
+    <button onclick="mudarCor('yellow')">Amarelo</button>
+    
+    <script>
+        function mudarCor(cor) {
+            const paragrafo = document.getElementById('meuParagrafo');
+            paragrafo.style.color = cor;
+        }
+    </script>
+
+</body>
+</html>
