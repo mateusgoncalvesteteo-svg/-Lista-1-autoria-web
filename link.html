@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links coloridos</title>
+    <style>
+        nav {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: underline;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .vermelho { color: red; }
+        .azul { color: blue; }
+        .amarelo { color: gold; }
+        .verde { color: green; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="https://github.com/mateusgoncalvesteteo-svg" target="_blank" class="vermelho" onmouseover="mudarFundo(this, 'red')">Vermelho</a>
+    </nav>
+
+    <nav>
+        <a href="https://github.com/mateusgoncalvesteteo-svg" target="_blank" class="azul" onmouseover="mudarFundo(this, 'blue')">Azul</a>
+    </nav>
+
+    <nav>
+        <a href="https://github.com/mateusgoncalvesteteo-svg" target="_blank" class="amarelo" onmouseover="mudarFundo(this, 'yellow')">Amarelo</a>
+    </nav>
+
+    <nav>
+        <a href="https://github.com/mateusgoncalvesteteo-svg" target="_blank" class="verde" onmouseover="mudarFundo(this, 'green')">Verde</a>
+    </nav>
+
+    <script>
+        function mudarFundo(elemento, cor) {
+            // Muda a cor de fundo do elemento <nav> pai
+            elemento.parentElement.style.backgroundColor = cor;
+        }
+    </script>
+    
+</body>
+</html>
