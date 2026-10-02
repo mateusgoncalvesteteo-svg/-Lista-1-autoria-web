@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Ocultar e Mostrar Parágrafo</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="meuParagrafo">Este é o parágrafo que será ocultado ou exibido ao clicar no botão abaixo.</p>
+
+    <button onclick="alternarVisibilidade()">Ocultar/Mostrar</button>
+
+    <script>
+        function alternarVisibilidade() {
+
+            var paragrafo = document.getElementById("meuParagrafo");
+
+            if (paragrafo.style.display === "none") {
+
+                paragrafo.style.display = "block";
+
+            } else {
+
+                paragrafo.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
