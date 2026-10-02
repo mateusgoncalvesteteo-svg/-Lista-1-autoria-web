@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Usuário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .campo {
+            margin-bottom: 12px;
+        }
+        label {
+            display: inline-block;
+            width: 140px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Cadastro de Usuário</h2>
+
+    <form id="formCadastro" onsubmit="validarFormulario(event)">
+        <div class="campo">
+            <label for="login">Login:</label>
+            <input type="text" id="login">
+        </div>
+
+        <div class="campo">
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha">
+        </div>
+
+        <div class="campo">
+            <label for="confirmarSenha">Confirmar Senha:</label>
+            <input type="password" id="confirmarSenha">
+        </div>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <script>
+        function validarFormulario(event) {
+            
+            event.preventDefault();
+
+            var login = document.getElementById("login").value.trim();
+            var senha = document.getElementById("senha").value;
+            var confirmarSenha = document.getElementById("confirmarSenha").value;
+
+            if (login === "" || senha === "" || confirmarSenha === "") {
+                alert("Por favor, preencha todos os campos!");
+                return; 
+            }
+
+            if (senha.length < 6 || senha.length > 10) {
+                alert("A senha deve possuir entre 6 e 10 caracteres!");
+                return;
+            }
+
+            if (senha !== confirmarSenha) {
+                alert("A senha e a confirmação de senha não coincidem!");
+                return;
+            }
+
+            alert("Cadastro realizado com sucesso!");
+            
+            document.getElementById("formCadastro").reset();
+        }
+    </script>
+
+</body>
+</html>
