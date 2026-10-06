@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverter Nomes</title>
+</head>
+<body>
+
+    <h2>Digite o nome de 5 pessoas:</h2>
+
+    <form id="formNomes">
+        <label>Pessoa 1: <input type="text" class="nome-input"></label><br><br>
+        <label>Pessoa 2: <input type="text" class="nome-input"></label><br><br>
+        <label>Pessoa 3: <input type="text" class="nome-input"></label><br><br>
+        <label>Pessoa 4: <input type="text" class="nome-input"></label><br><br>
+        <label>Pessoa 5: <input type="text" class="nome-input"></label><br><br>
+        
+        <button type="button" onclick="inverterNomes()">Inverter</button>
+    </form>
+
+    <script>
+        function inverterNomes() {
+   
+            const campos = document.querySelectorAll('.nome-input');
+            
+            const nomes = [];
+            campos.forEach(campo => {
+                nomes.push(campo.value);
+            });
+
+            nomes.reverse();
+
+            campos.forEach((campo, index) => {
+                campo.value = nomes[index];
+            });
+        }
+    </script>
+
+</body>
+</html>
