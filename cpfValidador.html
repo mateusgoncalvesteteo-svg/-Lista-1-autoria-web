@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de CPF</title>
+</head>
+<body>
+
+    <h2>Cadastro de Cliente</h2>
+
+    <form id="formCPF">
+        <label for="cpfInput">CPF (apenas números):</label><br><br>
+        <input type="text" id="cpfInput" maxlength="11" placeholder="Ex: 12345678901">
+        <button type="button" onclick="validarFormulario()">Validar CPF</button>
+    </form>
+
+    <p id="resultado"></p>
+
+    <script>
+        function validarCPF(cpf) {
+
+            cpf = cpf.replace(/\D/g, '');
+
+            if (cpf.length !== 11) {
+                return false;
+            }
+
+            if (/^(\d)\1{10}$/.test(cpf)) {
+                return false;
+            }
+
+            let soma = 0;
+            for (let i = 0; i < 9; i++) {
+                soma += parseInt(cpf.charAt(i)) * (10 - i);
+            }
+            let resto = (soma * 10) % 11;
+            if (resto === 10 || resto === 11) resto = 0;
+            if (resto !== parseInt(cpf.charAt(9))) {
+                return false;
+            }
+
+            soma = 0;
+            for (let i = 0; i < 10; i++) {
+                soma += parseInt(cpf.charAt(i)) * (11 - i);
+            }
+            resto = (soma * 10) % 11;
+            if (resto === 10 || resto === 11) resto = 0;
+            if (resto !== parseInt(cpf.charAt(10))) {
+                return false;
+            }
+
+            return true;
+        }
+
+        function validarFormulario() {
+            const input = document.getElementById('cpfInput').value.trim();
+            const paragrafoResultado = document.getElementById('resultado');
+
+            if (isNaN(input) || input === '') {
+                paragrafoResultado.style.color = "red";
+                paragrafoResultado.textContent = "Erro: Digite apenas números no campo de CPF!";
+                return;
+            }
+
+            if (validarCPF(input)) {
+                paragrafoResultado.style.color = "green";
+                paragrafoResultado.textContent = "CPF Válido!";
+            } else {
+                paragrafoResultado.style.color = "red";
+                paragrafoResultado.textContent = "CPF Inválido!";
+            }
+        }
+    </script>
+
+</body>
+</html>
