@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data por Extenso</title>
+</head>
+<body>
+    <form>
+        <label for="dataInput">Digite a data (dd/mm/aaaa):</label><br><br>
+        <input type="text" id="dataInput" placeholder="Ex: 06/09/2024">
+        <button type="button" onclick="exibirData()">Exibir Data</button>
+    </form>
+
+    <div id="resultado" style="margin-top: 15px; font-weight: bold;"></div>
+
+    <script>
+        function exibirData() {
+            var dataSelecionada = document.getElementById('dataInput').value.trim();
+            var resultadoDiv = document.getElementById('resultado');
+
+            if (dataSelecionada === "") {
+                resultadoDiv.innerHTML = "Por favor, digite uma data.";
+                return;
+            }
+
+            var meses = [
+                "janeiro", "fevereiro", "março", "abril", 
+                "maio", "junho", "julho", "agosto", 
+                "setembro", "outubro", "novembro", "dezembro"
+            ];
+
+            var partes = dataSelecionada.split("/");
+
+            if (partes.length !== 3) {
+                resultadoDiv.innerHTML = "Por favor, insira a data no formato dd/mm/aaaa.";
+                return;
+            }
+
+            var dia = partes[0];
+            var numeroMes = parseInt(partes[1]); 
+            var ano = partes[2];
+
+            var nomeMes = meses[numeroMes - 1];
+
+            if (nomeMes) {
+                resultadoDiv.innerHTML = dia + " de " + nomeMes + " de " + ano;
+            } else {
+                resultadoDiv.innerHTML = "Mês inválido. Digite um mês entre 01 e 12.";
+            }
+        }
+    </script>
+</body>
+</html>
