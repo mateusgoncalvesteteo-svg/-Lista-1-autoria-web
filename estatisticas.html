@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Estatísticas Numéricas</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Calculadora de Estatísticas Numéricas</h2>
+
+    <form>
+        <label for="num1">Primeiro Número:</label><br>
+        <input type="number" id="num1" step="any"><br><br>
+
+        <label for="num2">Segundo Número:</label><br>
+        <input type="number" id="num2" step="any"><br><br>
+
+        <label for="num3">Terceiro Número:</label><br>
+        <input type="number" id="num3" step="any"><br><br>
+
+        <button type="button" onclick="calcularEstatisticas()">Calcular Estatísticas</button><br><br>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        function calcularEstatisticas() {
+            var n1 = parseFloat(document.getElementById('num1').value);
+            var n2 = parseFloat(document.getElementById('num2').value);
+            var n3 = parseFloat(document.getElementById('num3').value);
+
+            if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
+                alert("Por favor, preencha os três campos com números válidos.");
+                return;
+            }
+
+            var soma = n1 + n2 + n3;
+            var media = soma / 3;
+            var produto = n1 * n2 * n3;
+            var maior = Math.max(n1, n2, n3);
+            var menor = Math.min(n1, n2, n3);
+
+            var tabelaHTML = `
+                <h3>Resultados:</h3>
+                <table>
+                    <tr>
+                        <th>Números Digitados</th>
+                        <td>${n1}, ${n2}, ${n3}</td>
+                    </tr>
+                    <tr>
+                        <th>Soma</th>
+                        <td>${soma}</td>
+                    </tr>
+                    <tr>
+                        <th>Média</th>
+                        <td>${media.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <th>Produto</th>
+                        <td>${produto}</td>
+                    </tr>
+                    <tr>
+                        <th>Maior Número</th>
+                        <td>${maior}</td>
+                    </tr>
+                    <tr>
+                        <th>Menor Número</th>
+                        <td>${menor}</td>
+                    </tr>
+                </table>
+            `;
+
+            document.getElementById('resultado').innerHTML = tabelaHTML;
+        }
+    </script>
+
+</body>
+</html>
