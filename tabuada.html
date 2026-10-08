@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+</head>
+<body>
+    <h2>Calculadora de Tabuada</h2>
+
+    <form>
+        <label for="numero">Digite um número:</label><br><br>
+        <input type="number" id="numero" placeholder="Ex: 5"><br><br>
+
+        <button type="button" onclick="gerarTabuada()">Gerar Tabuada</button>
+        </label>
+
+    </form>
+    
+    <div id="resultado"></div>
+
+    <script>
+        function gerarTabuada() {
+            var numero = parseInt(document.getElementById('numero').value);
+            var resultadoDiv = document.getElementById('resultado');
+
+            if (isNaN(numero)) {
+                resultadoDiv.innerHTML = "Por favor, insira um número válido." ;
+            }
+
+            var tabuadaHTML = "<h3>Tabuada do " + numero + ":</h3><ul>";
+                for (var i = 1; i <= 10; i++) {
+                    tabuadaHTML += "<li>" + numero + " x " + i + " = " + (numero * i) + "</li>"
+                }
+                resultadoDiv.innerHTML = tabuadaHTML + "</ul>";
+
+        }
+    </script>
+</body>
+</html>
