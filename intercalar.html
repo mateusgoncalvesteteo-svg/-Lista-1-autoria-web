@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Intercalador de Palavras</title>
+</head>
+<body>
+
+    <h2>Intercalador de Palavras</h2>
+
+    <form>
+        <label for="palavra1">Primeira Palavra:</label><br>
+        <input type="text" id="palavra1"><br><br>
+
+        <label for="palavra2">Segunda Palavra:</label><br>
+        <input type="text" id="palavra2"><br><br>
+
+        <button type="button" onclick="intercalarPalavras()">Intercalar</button><br><br>
+
+        <label for="resultado">Resultado:</label><br>
+        <input type="text" id="resultado" disabled><br>
+    </form>
+
+    <script>
+        function intercalarPalavras() {
+            var p1 = document.getElementById('palavra1').value;
+            var p2 = document.getElementById('palavra2').value;
+
+            var tamanhoMaximo = p1.length;
+            if (p2.length > tamanhoMaximo) {
+                tamanhoMaximo = p2.length;
+            }
+
+            var resultado = "";
+
+            for (var i = 0; i < tamanhoMaximo; i++) {
+                if (i < p1.length) {
+                    resultado += p1[i];
+                }
+                if (i < p2.length) {
+                    resultado += p2[i];
+                }
+            }
+
+            document.getElementById('resultado').value = resultado;
+        }
+    </script>
+
+</body>
+</html>
