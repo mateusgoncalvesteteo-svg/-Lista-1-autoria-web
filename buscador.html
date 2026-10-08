@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Palavras</title>
+    <style>
+        .amarelo {
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <form>
+        <label for="palavra">Digite uma palavra:</label><br><br>
+        <input type="text" id="palavra" placeholder="Ex: casa">
+        <button type="button" onclick="buscarPalavra()">Pesquisar</button>
+    </form>
+
+    <div id="resultado" style="margin-top: 15px; font-weight: bold;"></div>
+
+    <hr>
+
+    <p id="paragrafo">
+        a casa de joao fica ao lado da casa da maria . aquela casa e bonita .
+    </p>
+
+    <script>
+        function buscarPalavra() {
+            var palavraBuscada = document.getElementById('palavra').value.trim().toLowerCase();
+            var resultadoDiv = document.getElementById('resultado'); 
+            var paragrafo = document.getElementById('paragrafo');
+
+            if (palavraBuscada === "") {
+                resultadoDiv.innerHTML = "Por favor, insira uma palavra para buscar.";
+                return;
+            }
+
+            var textoOriginal = "a casa de joao fica ao lado da casa da maria . aquela casa e bonita .";
+
+            var listaDePalavras = textoOriginal.split(" ");
+
+            var contador = 0;
+            var novoTextoHTML = "";
+
+            for (var i = 0; i < listaDePalavras.length; i++) {
+                var palavraAtual = listaDePalavras[i];
+
+                if (palavraAtual.toLowerCase() === palavraBuscada) {
+                    contador = contador + 1; 
+                    novoTextoHTML = novoTextoHTML + "<span class='amarelo'>" + palavraAtual + "</span> ";
+                } else {
+                    novoTextoHTML = novoTextoHTML + palavraAtual + " ";
+                }
+            }
+
+            paragrafo.innerHTML = novoTextoHTML;
+
+            if (contador > 0) {
+                resultadoDiv.innerHTML = "Foram encontradas " + contador + " ocorrência(s) da palavra.";
+            } else {
+                resultadoDiv.innerHTML = "A busca não retornou nenhum resultado.";
+            }
+        }
+    </script>
+
+</body>
+</html>
